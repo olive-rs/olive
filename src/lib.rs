@@ -1,5 +1,7 @@
 mod element;
-pub use element::Element;
+pub use element::{create_element, Element, Node, Tag};
+
+pub mod dom;
 
 pub trait Component {
     type Msg;

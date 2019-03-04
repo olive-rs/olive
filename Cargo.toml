@@ -6,3 +6,10 @@ edition = "2018"
 license = "MIT"
 description = "WASM Framework"
 [dependencies]
+askama_escape = "0.2.0"
+
+
+[workspace]
+members = ["olive-macros"]
+
+# TODO: Conditional features for including the dom and server code. Enabled by default
