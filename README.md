@@ -3,10 +3,11 @@
 A WIP Rust frontend framework. 🕊
 
 TODO: Props Example
+TODO: Best practices: console_error_hook, LTO, wee_alloc vs ...
 
 ```rust
 // lib.rs
-use olive::{Component, Element, rsx};
+use olive::{Component, Element, rsx, start};
 
 struct Counter {
     count: i32;
@@ -40,5 +41,10 @@ impl Component for Counter {
             <button onclick=Msg::Decrement> -1 </button>
         }
     }
+}
+
+#[start]
+pub fn main() {
+    olive::render(Counter{ 0 })
 }
 ```
