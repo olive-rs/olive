@@ -1,4 +1,3 @@
-use std::borrow::Cow;
 use std::collections::HashMap;
 
 #[derive(Clone, Debug, Default)]
@@ -9,8 +8,8 @@ impl Element {
         Element(Vec::new())
     }
 
-    fn push(mut self, value: Node) -> Self {
-        self.0.push(value);
+    fn push<T: Into<Node>>(mut self, value: T) -> Self {
+        self.0.push(value.into());
         self
     }
 }
@@ -30,6 +29,18 @@ pub enum Node {
     Text(String),
 }
 
+impl From<Tag> for Node {
+    fn from(tag: Tag) -> Self {
+        Node::Tag(tag)
+    }
+}
+
+impl From<String> for Node {
+    fn from(text: String) -> Self {
+        Node::Text(text)
+    }
+}
+
 #[derive(Clone, Debug)]
 pub struct Tag {
     pub name: String,
@@ -43,9 +54,9 @@ pub fn create_element<T: Into<String>>(
     attributes: HashMap<String, String>,
     children: Element,
 ) -> Element {
-    Element::new().push(Node::Tag(Tag {
+    Element::new().push(Tag {
         name: name.into(),
         attributes,
         children,
-    }))
+    })
 }

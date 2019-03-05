@@ -28,6 +28,7 @@ fn render_node(node: Node) -> String {
 }
 
 // Based on maud
+// TODO: extract to html-builder repo
 fn render_tag(tag: Tag) -> String {
     let mut s = String::new();
     let name = &escape_html(tag.name);
