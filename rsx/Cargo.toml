@@ -1,0 +1,9 @@
+[package]
+name = "rsx"
+version = "0.1.0"
+authors = ["jay.nagpaul"]
+edition = "2018"
+description = "RuSt XML Macro"
+license = "MIT"
+
+[dependencies]

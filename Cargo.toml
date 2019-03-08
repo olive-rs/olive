@@ -12,8 +12,11 @@ askama_escape = "0.2.0"
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = "0.2.38"
 
+[target.'cfg(target_arch = "wasm32")'.dependencies.web-sys]
+version = "0.3.15"
+features = ["Node"]
 
 [workspace]
-members = ["olive-macros"]
+members = ["olive-macros", "rsx"]
 
 # TODO: Conditional features for including the dom and server code. Enabled by default

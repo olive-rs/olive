@@ -4,7 +4,9 @@ A WIP Rust frontend framework. 🕊
 
 TODO: Props Example
 TODO: Best practices: console_error_hook, LTO, wee_alloc vs ...
-
+TODO: Should view! just return anything that impl Renderable.
+        String on non wasm32
+        VNode on wasm32
 ```rust
 // lib.rs
 use olive::{Component, Element, rsx, start};
