@@ -1,0 +1,13 @@
+[package]
+name = "dog"
+version = "0.1.0"
+authors = ["Jay Nagpaul <jaynagpaul@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+futures = "0.1.25"
+env_logger = "0.6.1"
+
+[dependencies.actix-web]
+git = "https://github.com/actix/actix-web"
+branch = "1.0"

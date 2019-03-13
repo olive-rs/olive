@@ -2,11 +2,27 @@
 
 A WIP Rust frontend framework. 🕊
 
+TODO: Integrate / Contribute to Gloo
+TODO: Remove ../dom_patch
+TODO: Elegant non-rsx code
 TODO: Props Example
 TODO: Best practices: console_error_hook, LTO, wee_alloc vs ...
 TODO: Should view! just return anything that impl Renderable.
-        String on non wasm32
-        VNode on wasm32
+String on non wasm32
+VNode on wasm32
+TODO: Testing -> wasm-bindgen-test
+TODO: Cleanup import paths / setup prelude
+TODO: Remove dependency on virtual-dom-rs to build on stable
+
+- Explore alternative approaches
+- lit-html
+- memoized dom / imba
+- Observable / Dominator
+- Change propagation: https://www.bitovi.com/blog/change-propagation
+- Inferno
+- React Fiber
+- Marko
+
 ```rust
 // lib.rs
 use olive::{Component, Element, rsx, start};

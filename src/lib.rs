@@ -1,7 +1,8 @@
-mod element;
-pub use element::{create_element, Element, Node, Tag};
+mod view;
+pub use view::{create_element, Element, Node, View};
 
 pub mod dom;
+pub use dom::{diff, patch};
 
 pub trait Component {
     type Msg;
@@ -9,5 +10,5 @@ pub trait Component {
 
     fn create(props: Self::Props) -> Self;
     fn update(&mut self, msg: Self::Msg);
-    fn view(&self) -> Element;
+    fn view(&self) -> View;
 }

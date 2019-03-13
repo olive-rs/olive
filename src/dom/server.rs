@@ -1,4 +1,6 @@
-use crate::{Element, Node, Tag};
+// TODO: Move out to separate crate?
+
+use crate::{Element, Node};
 use askama_escape::{Html, MarkupDisplay, Text};
 use std::fmt::Display;
 
@@ -10,28 +12,30 @@ fn escape_text(s: String) -> String {
     MarkupDisplay::new_unsafe(s, Text).to_string()
 }
 
-pub fn render_element(element: Element) -> String {
+// TODO: Combine with render_node?
+pub fn render_nodes(nodes: Vec<Node>) -> String {
     let mut s = String::new();
 
-    for node in element.into_iter() {
-        s.push_str(&render_node(node))
+    for node in nodes.into_iter() {
+        s += &render_node(node)
     }
 
     s
 }
 
-fn render_node(node: Node) -> String {
+pub fn render_node(node: Node) -> String {
     match node {
-        Node::Tag(tag) => render_tag(tag),
+        Node::Element(element) => render_element(element),
         Node::Text(text) => render_text(text),
+        Node::Fragment(nodes) => render_nodes(nodes),
     }
 }
 
 // Based on maud
 // TODO: extract to html-builder repo
-fn render_tag(tag: Tag) -> String {
+fn render_element(element: Element) -> String {
     let mut s = String::new();
-    let name = &escape_html(tag.name);
+    let name = &escape_html(element.name);
     // <tag>
     s.push_str("<");
     s.push_str(name);
@@ -40,7 +44,7 @@ fn render_tag(tag: Tag) -> String {
     // TODO: attrs
 
     // children
-    s.push_str(&render_element(tag.children));
+    s.push_str(&render_nodes(element.children));
 
     // </tag>
     s.push_str("</");
