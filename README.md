@@ -2,6 +2,11 @@
 
 A WIP Rust frontend framework. 🕊
 
+!!!!!! Different macro expansions based on target:
+str - non wasm32
+  
+Long Term TODO: Keep the core crate very light, not typesafe and build
+TODO: SyntheticEvent similar to React
 TODO: Integrate / Contribute to Gloo
 TODO: Remove ../dom_patch
 TODO: Elegant non-rsx code
@@ -25,7 +30,7 @@ TODO: Remove dependency on virtual-dom-rs to build on stable
 
 ```rust
 // lib.rs
-use olive::{Component, Element, rsx, start};
+use olive::{Component, View, rsx, start};
 
 struct Counter {
     count: i32;
@@ -51,7 +56,7 @@ impl Component for Counter {
         }
     }
 
-    fn view(&self) -> Element {
+    fn view(&self) -> View {
         rsx! {
             <h1> Counter </h1>
             <p>{self.count}</p>

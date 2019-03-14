@@ -6,7 +6,7 @@ pub type View = Node;
 pub enum Node {
     Element(Element),
     Text(String),
-    Fragment(Vec<Node>),
+    Fragment(Vec<Node>)
 }
 
 #[derive(Clone, Debug)]

@@ -29,5 +29,6 @@ pub fn render<C: Component>(component: C, mount_point: DomNode) -> Result<(), Js
 fn render_vnode(vnode: VirtualNode, mount_point: DomNode) -> Result<(), JsValue> {
     let dom_node = vnode.create_dom_node();
 
-    mount_point.append_child(&dom_node)?;
+    mount_point.append_child(&dom_node).map(|_|())
+    
 }
